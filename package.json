@@ -17,6 +17,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://servicios.usig.buenosaires.gob.ar",
+  
   "eslintConfig": {
     "extends": [
       "react-app",
