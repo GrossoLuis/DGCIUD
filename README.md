@@ -15,7 +15,9 @@ Abra [http://localhost:3000](http://localhost:3000) para verlo en el navegador.
 
 ### Ejercicios 
 
-Todos los ejercicos estan resueltos en la carpeta "Ejercicios". 
+Todos los ejercicios estan resueltos en la carpeta "Ejercicios". 
+
+El buscador de calles se encuentra en el siguiente link deployado: https://dgciud.vercel.app/
 
 Quedo a disposicion ante cualquier consulta.
 
