@@ -1,0 +1,47 @@
+GIT
+
+Simulamos que se tienen el branch Master y el branch DEV, este último está adelantado
+dado que tiene nuevas funcionalidades.
+A) Se quiere revertir la última funcionalidad pusheada
+B) Se quiere hacer un deploy en producción de la versión que llamaremos v1.2.0, qué
+pasos seguiría? Las soluciones pueden ser en palabras o con comandos GIT.
+
+
+A)Primero verifico estar en la rama DEV 
+git checkout DEV
+Luego verifico el historial de commits para identificar el commit que deseo revertir
+git log
+Copio el hash de la ultima funcionalidad que deseo revertir 
+git revert <hash_del_commit>
+Una vez resueltos los conflictos, realizo el commit para completar el proceso de revertir: 
+git commit -m"Revertir ultima funcionalidad"  
+Finalmente, si deseo actualizar el branch Master para reflejar los cambios revertidos, puedo fusionar 
+el branch DEV en el branch Master con el siguiente comando: 
+git checkout master
+git merge DEV
+
+
+B)Primero me aseguro de que la versión v1.2.0 esté completamente probada y lista para producción. 
+Verifico que todas las funcionalidades hayan sido implementadas y probadas adecuadamente.
+Actualizo el código en el branch de producción (por ejemplo, el branch "master") con la versión v1.2.0.
+   
+    git checkout master
+    git merge DEV
+
+Luego me aseguro de que el código en el branch de producción esté actualizado y limpio, sin errores ni conflictos.
+Genero una etiqueta (tag) para marcar la versión v1.2.0:
+
+    git tag v1.2.0
+
+La subo a la repo:  
+
+    git push origin v1.2.0
+
+
+Realizo el deploy en el servidor de producción utilizando la etiqueta v1.2.0.
+Lo hago mediante una copia del código en el servidor o mediante algún proceso automatizado de despliegue 
+(por ejemplo, mediante herramientas como Jenkins, Travis CI, etc.).
+
+Realizo pruebas adicionales en el entorno de producción para asegurarte de que todo funcione como se espera y 
+si todo esta bien, marco la version v1.2.0 como la version estable en el sistema de gestion de versiones.
+    

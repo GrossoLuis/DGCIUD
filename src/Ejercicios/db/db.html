@@ -1,0 +1,23 @@
+// Armar las siguientes Querys
+// 1 - Taxistas que tengan email pero no dominio (patente de vehículo)
+// 2 - Clientes que ingresaron a la aplicación en las últimas 24hs
+// 3 - Recuento de todos los estados de viajes .
+// 4 - Viajes en los que el taxista con email X , llevó al pasajero con email Y.
+
+1- SELECT *
+FROM Taxista
+WHERE email LIKE '%@%' AND dominio IS NULL;
+
+2-SELECT *
+FROM Cliente
+WHERE lastLogin >= DATE_SUB(NOW(), INTERVAL 1 DAY);
+
+3-SELECT estado, COUNT(*) AS cantidad
+FROM Viaje
+GROUP BY estado;
+
+4- SELECT v.viajeId, v.fecha, t.email AS email_taxista, c.email AS email_cliente
+FROM Viaje v
+JOIN Taxista t ON v.id_taxista = t.id_taxista
+JOIN Cliente c ON v.id_cliente = c.id_cliente
+WHERE t.email = 'email_X' AND c.email = 'email_Y';
